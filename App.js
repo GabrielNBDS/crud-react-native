@@ -1,21 +1,21 @@
-import { StatusBar } from 'expo-status-bar';
+import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar, LogBox } from 'react-native';
+import { BooksProvider } from './src/hooks/books';
+import Routes from './src/Routes';
+
+LogBox.ignoreLogs(['Setting a timer']);
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+      <StatusBar barStyle="dark-content" backgroundColor="#fff" />
+      
+      <BooksProvider>
+        <NavigationContainer>
+          <Routes />
+        </NavigationContainer>
+      </BooksProvider>
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
